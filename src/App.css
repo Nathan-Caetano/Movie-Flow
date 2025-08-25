@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-image: url("assets/Meteor.svg");
+  background-color: #000000;
+  color: #d8def8;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+header{
+  background: linear-gradient(180deg,rgb(3, 12, 31) 0%, rgba(0, 0, 0, 0) 100%);
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+main{
+  padding: 20px 100px 20px 100px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px 10px 0px;
+  border-bottom: 2px solid;
+}
+
+.title h2{
+  font-size: 25px;
+  font-weight: 400;
+}
+
+form {
+  margin: 20px 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1d5b9e;
+  font-size: larger;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+button:hover {
+  background-color: #163d68;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.movie-item {
+  position: relative;
+}
+
+.movie-item img {
+  max-height: 250px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  box-shadow: 0px 0px 10px #000000;
+  transition: filter 0.5s;
+  max-width: 190px;
+}
+
+.movie-item:hover img {
+  transform: scale(1.05);
+}
+
+.movie-item img.watched {
+  filter: grayscale(100%);
+}
+
+.remove-button,
+.watch-button {
+  position: absolute;
+  top: 10px;
+  background-color: #da1e26;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 1;
+}
+
+.remove-button:hover,
+.watch-button:hover {
+  background-color: #a1101c;
+  scale: 1.2;
+  transition: scale 0.3s;
+}
+
+.remove-button {
+  right: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.movie-item:hover .remove-button {
+  opacity: 1;
+}
+
+.watch-button {
+  left: 10px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.movie-item:hover .watch-button {
+  opacity: 1;
+}
+
+@media (pointer: coarse) {
+  .remove-button{
+    opacity: 1;
+  }
+
+  .watch-button{
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  main{
+    padding: 20px;
+  }
+}

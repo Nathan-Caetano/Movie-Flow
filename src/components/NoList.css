@@ -1,0 +1,22 @@
+#noList-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    height: 70vh;
+}
+
+#noList-container h3{
+    font-size: 25px;
+    font-weight: 400;
+}
+
+#noList-container p{
+    font-size: 18px;
+}
+
+#noList-container button{
+    max-width: 500px;
+    width: 100%;
+}
