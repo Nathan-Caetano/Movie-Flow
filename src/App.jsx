@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import NoMovie from './components/NoList';
+import FilmesEmCartaz from './components/FilmesEmCartaz/FilmesEmCartaz';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -38,11 +38,11 @@ function App() {
         <h1>Movie Flow</h1>
       </header>
       <main>
+        <FilmesEmCartaz />
         <div className='title'>
           <h2>Sua Lista</h2>
           <button>Add +</button>
         </div>
-        <NoMovie/>
       </main>
     </div>
   );

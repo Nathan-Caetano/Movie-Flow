@@ -1,7 +1,7 @@
-import '../App.css'
+import '../../App.css'
 import './NoList.css'
 
-function NoMovie() {
+function NoList() {
 
     return (
         <div id='noList-container'>
@@ -12,4 +12,4 @@ function NoMovie() {
     )
 }
 
-export default NoMovie;
+export default NoList;
