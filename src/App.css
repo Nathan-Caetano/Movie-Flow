@@ -30,19 +30,6 @@ main{
   padding: 20px 100px 20px 100px;
 }
 
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0px 10px 0px;
-  border-bottom: 2px solid;
-}
-
-.title h2{
-  font-size: 25px;
-  font-weight: 400;
-}
-
 form {
   margin: 20px 0;
 }
@@ -63,7 +50,7 @@ form {
   border-radius: 5px;
 }
 
-button {
+.btn-padrao {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -74,7 +61,7 @@ button {
   transition: all .2s;
 }
 
-button:hover {
+.btn-padrao:hover {
   background-color: #163d68;
 }
 

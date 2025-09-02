@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import FilmesEmCartaz from './components/FilmesEmCartaz/FilmesEmCartaz';
+import MovieList from './components/MovieList/MovieList';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -11,12 +12,6 @@ function App() {
       setMovies(JSON.parse(storedMovies));
     }
   }, []);
-  
-  const addMovie = (movie) => {
-    const newMovies = [...movies, { ...movie, watched: false }];
-    setMovies(newMovies);
-    localStorage.setItem('movies', JSON.stringify(newMovies));
-  };
 
   const removeMovie = (index) => {
     const newMovies = movies.filter((_, i) => i !== index);
@@ -39,10 +34,7 @@ function App() {
       </header>
       <main>
         <FilmesEmCartaz />
-        <div className='title'>
-          <h2>Sua Lista</h2>
-          <button>Add +</button>
-        </div>
+        <MovieList />
       </main>
     </div>
   );
