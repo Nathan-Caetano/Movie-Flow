@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 import '../../App.css';
+import './FilmesEmCartaz.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 export default function FilmesEmCartaz() {
   const [movies, setMovies] = useState([]);
@@ -20,7 +26,6 @@ export default function FilmesEmCartaz() {
           options
         );
         const data = await response.json();
-        console.log("Resposta da API:", data);
         setMovies(data.results);
       } catch (error) {
         console.error("Erro ao buscar filmes:", error);
@@ -31,19 +36,36 @@ export default function FilmesEmCartaz() {
   }, []);
 
   return (
-    <>
-      <h1>Filmes em Cartaz</h1>
-      <ul>
+    <div className='filmes-cartaz'>
+      <h2>Filmes em Cartaz</h2>
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
+        loop={true}
+        spaceBetween={20}
+        slidesPerView={3}
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          600: { slidesPerView: 3 },
+          900: { slidesPerView: 4 },
+          1300: { slidesPerView: 5},
+          1500: { slidesPerView: 6}
+        }}
+      >
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <img 
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
-              alt={movie.title} 
-            />
-            <p>{movie.title}</p>
-          </li>
+          <SwiperSlide key={movie.id}>
+            <li className='filme'>
+              <img 
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
+                alt={movie.title} 
+              />
+              <p>{movie.title}</p>
+            </li>
+          </SwiperSlide>
         ))}
-      </ul>
-    </>
+      </Swiper>
+    </div>
   );
 }
