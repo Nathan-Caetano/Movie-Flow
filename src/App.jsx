@@ -4,27 +4,29 @@ import FilmesEmCartaz from './components/FilmesEmCartaz/FilmesEmCartaz';
 import MovieList from './components/MovieList/MovieList';
 
 function App() {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    const storedMovies = localStorage.getItem('movies');
-    if (storedMovies) {
-      setMovies(JSON.parse(storedMovies));
+  const [movies, setMovies] = useState(() => {
+    const storedMovies = localStorage.getItem('Lista');
+    try {
+      return storedMovies ? JSON.parse(storedMovies) : [];
+    } catch (error) {
+      console.error("Erro ao carregar filmes do localStorage:", error);
+      return [];
     }
-  }, []);
+  });
 
-  const removeMovie = (index) => {
-    const newMovies = movies.filter((_, i) => i !== index);
-    setMovies(newMovies);
-    localStorage.setItem('movies', JSON.stringify(newMovies));
+  const addMovie = (movie) => {
+    const updatedMovies = Array.isArray(movies) ? [...movies, movie] : [movie];
+    setMovies(updatedMovies);
+    localStorage.setItem('Lista', JSON.stringify(updatedMovies));
   };
 
-  const toggleWatched = (index) => {
-    const newMovies = movies.map((movie, i) => (
-      i === index ? { ...movie, watched: !movie.watched } : movie
-    ));
-    setMovies(newMovies);
-    localStorage.setItem('movies', JSON.stringify(newMovies));
+  const removeMovie = (movieToRemove) => {
+    const movieIndex = movies.findIndex((movie) => movie.id === movieToRemove.id);
+    if (movieIndex !== -1) {
+      movies.splice(movieIndex, 1);
+      setMovies([...movies]);
+      localStorage.setItem('Lista', JSON.stringify(movies));
+    }
   };
 
   return (
@@ -33,8 +35,8 @@ function App() {
         <h1>Movie Flow</h1>
       </header>
       <main>
-        <FilmesEmCartaz />
-        <MovieList />
+        <FilmesEmCartaz addMovie={addMovie} />
+        <MovieList movies={movies} removeMovie={removeMovie} />
       </main>
     </div>
   );

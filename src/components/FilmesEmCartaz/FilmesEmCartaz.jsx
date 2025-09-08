@@ -6,9 +6,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import AddFilmes from '../addFilmes';
 
-export default function FilmesEmCartaz() {
+export default function FilmesEmCartaz({ addMovie }) {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -58,7 +57,7 @@ export default function FilmesEmCartaz() {
         {movies.map((movie) => (
           <SwiperSlide key={movie.id}>
             <li className='filme'>
-                <button className='filme-btn' onClick={() => AddFilmes(movie)}>✓</button>
+              <button className='filme-btn' onClick={() => addMovie(movie)}>✓</button>
               <img 
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
                 alt={movie.title} 

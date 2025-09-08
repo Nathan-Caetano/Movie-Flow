@@ -4,6 +4,7 @@
   justify-content: space-between;
   padding: 10px 0px 10px 0px;
   border-bottom: 2px solid;
+  margin-bottom: 20px;
 }
 
 .title h2 {
@@ -11,8 +12,42 @@
   font-weight: 400;
 }
 
+.lista ul{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-.filme-btn {
+.lista .filme img{
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: all .3s;
+}
+
+.lista .filme img:hover{
+  transform: translateY(-10px);
+}
+
+.lista .filme{
+  margin-bottom: 20px;
+}
+
+.filme {
+  position: relative;
+}
+
+.filme p{
+  text-align: center;
+  font-size: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.lista .filme-btn {
   position: absolute;
   top: 10px;
   background-color: #1D5B9E;
@@ -28,7 +63,7 @@
   justify-content: center;
   opacity: 0;
   padding: 0;
-  z-index: 1;
+  z-index: 99999;
 }
 
 .filme-btn:hover {
@@ -41,10 +76,6 @@
   right: 10px;
   opacity: 0;
   transition: opacity 0.3s;
-}
-
-.filme:hover .filme-btn {
-  opacity: 1;
 }
 
 .filme:hover .filme-btn {
